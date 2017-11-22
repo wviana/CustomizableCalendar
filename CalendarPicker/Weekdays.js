@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { Utils } from './Utils';
 
 export default function Weekdays(props) {
-  const { styles, startFromMonday, weekdays, textStyle } = props;
+  const { styles, startFromMonday, weekdays, textStyle, textWeekdaysStyle } = props;
   let wd = weekdays;
   if (!wd) {
     wd = startFromMonday? Utils.WEEKDAYS_MON : Utils.WEEKDAYS; // English Week days Array
@@ -17,7 +17,7 @@ export default function Weekdays(props) {
     <View style={styles.dayLabelsWrapper}>
       { wd.map((day, key) => {
           return (
-            <Text key={key} style={[styles.dayLabels, textStyle]}>
+            <Text key={key} style={[styles.dayLabels, textStyle, textWeekdaysStyle]}>
               {day}
             </Text>
           );

@@ -76,13 +76,14 @@ export default class CalendarPicker extends Component {
       selectedDayTextColor,
       todayBackgroundColor,
       width, height,
+      selectRangeColor,
     } = props;
 
     // The styles in makeStyles are intially scaled to this width
     const containerWidth = width ? width : Dimensions.get('window').width;
     const containerHeight = height ? height : Dimensions.get('window').height;
     const initialScale = Math.min(containerWidth, containerHeight) / scaleFactor;
-    return {styles: makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor)};
+    return {styles: makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor, selectRangeColor)};
   }
 
   updateMonthYear(initialDate = this.props.initialDate) {
@@ -196,11 +197,14 @@ export default class CalendarPicker extends Component {
       maxDate,
       weekdays,
       months,
+      shortMonths,
       previousTitle,
       nextTitle,
       textStyle,
+      textWeekdaysStyle,
+      selectRangeColor,
     } = this.props;
-
+ 
     return (
       <Swiper
         onSwipe={(direction) => this.onSwipe(direction)}
@@ -215,15 +219,19 @@ export default class CalendarPicker extends Component {
             onPressPrevious={this.handleOnPressPrevious}
             onPressNext={this.handleOnPressNext}
             months={months}
+            shortMonths={shortMonths}
             previousTitle={previousTitle}
             nextTitle={nextTitle}
             textStyle={textStyle}
+            selectedStartDate={selectedStartDate}
+            selectedEndDate={selectedEndDate}
           />
           <Weekdays
             styles={styles}
             startFromMonday={startFromMonday}
             weekdays={weekdays}
             textStyle={textStyle}
+            textWeekdaysStyle={textWeekdaysStyle}
           />
           <DaysGridView
             month={currentMonth}

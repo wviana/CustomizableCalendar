@@ -16,9 +16,12 @@ export default function HeaderControls(props) {
     onPressNext,
     onPressPrevious,
     months,
+    shortMonths,
     previousTitle,
     nextTitle,
     textStyle,
+    selectedStartDate,
+    selectedEndDate,
   } = props;
   const MONTHS = months? months : Utils.MONTHS; // English Month Array
   // getMonth() call below will return the month number, we will use it as the
@@ -27,6 +30,11 @@ export default function HeaderControls(props) {
   const next = nextTitle ? nextTitle : 'Next';
   const month = MONTHS[currentMonth];
   const year = currentYear;
+  const dayDiff = selectedEndDate && selectedStartDate && !Utils.compareDates(selectedEndDate, selectedStartDate);
+  const shortStartMonth = selectedStartDate && dayDiff ? shortMonths[selectedStartDate.getMonth()] : '';
+  const shortEndMonth = selectedEndDate && dayDiff ? ' - ' + shortMonths[selectedEndDate.getMonth()] : '';
+  const dayStart = selectedStartDate && dayDiff ? selectedStartDate.getDate() : '';
+  const dayEnd = selectedEndDate && dayDiff ? selectedEndDate.getDate() : '';
 
   return (
     <View style={styles.headerWrapper}>
@@ -41,6 +49,9 @@ export default function HeaderControls(props) {
       <View>
         <Text style={[styles.monthLabel, textStyle]}>
            { month } { year }
+        </Text>
+        <Text style={[styles.shortDate, textStyle]}>
+           {shortStartMonth} {dayStart} {shortEndMonth} {dayEnd}
         </Text>
       </View>
       <View style={styles.monthSelector}>
