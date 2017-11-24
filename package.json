@@ -1,6 +1,6 @@
 {
   "name": "react-native-costumizable-calendar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Calendar Picker Component for React Native",
   "engines": {
     "node": ">=7.6.0"
@@ -71,8 +71,6 @@
   "_resolved": "https://registry.npmjs.org/react-native-customizable-calendar/-/react-native-customizable-calendar-1.0.1.tgz",
   "dependencies": {
     "expo": "^15.1.0",
-    "react": "~15.4.0",
-    "react-native": "0.42.3",
     "prop-types": "^15.6.0"
   }
 }
