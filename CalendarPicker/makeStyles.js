@@ -18,14 +18,14 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
   return {
     calendar: {
       height: 320*scaler,
-      marginTop: 10*scaler
+      marginTop: 10*scaler,
+      flex: 1
     },
 
     dayButton: {
       width: 30*scaler,
       height: 40*scaler,
-      alignSelf: 'center',
-      zIndex: 100
+      alignSelf: 'center'
     },
 
     dayButtonSelected: {
@@ -59,12 +59,10 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
 
     dayLabelsWrapper: {
       flexDirection: 'row',
-      marginBottom: 10*scaler,
-      paddingTop: 10*scaler,
-      paddingBottom: 10*scaler,
       alignSelf: 'center',
       backgroundColor: 'rgba(0,0,0,0.0)',
-      borderColor: 'rgba(0,0,0,0.2)'
+      borderColor: 'rgba(0,0,0,0.2)',
+      marginTop: 5
     },
 
     daysWrapper: {
@@ -100,13 +98,13 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
       alignItems: 'center',
       justifyContent: 'center',
       width: 50*scaler,
-      height: 50*scaler,
+      height: 45*scaler,
       backgroundColor: 'rgba(0,0,0,0.0)',
     },
 
     dayWrapperRange: {
       width: 50*scaler,
-      height: 50*scaler,
+      height: 45*scaler,
       backgroundColor: 'rgba(0,0,0,0.0)'
     },
 
@@ -172,10 +170,8 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
       alignItems: 'center',
       flexDirection: 'row',
       alignSelf: 'center',
-      marginBottom: 10*scaler,
-      padding: 5*scaler,
-      paddingBottom: 3*scaler,
-      backgroundColor: 'rgba(0,0,0,0.0)'
+      backgroundColor: 'rgba(0,0,0,0.0)',
+      marginTop: 5
     },
 
     monthSelector: {

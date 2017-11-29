@@ -68,7 +68,7 @@ export default function Day(props) {
     // Set selected ranges styles
     if (allowRangeSelection) {
       if (selectedStartDate && selectedEndDate) {
-          // Apply style for start date
+        // Apply style for start date
         if (Utils.compareDates(thisDay,selectedStartDate)) {
           isStartEndRange = true;
           daySelectedStyle = styles.startDayWrapper;

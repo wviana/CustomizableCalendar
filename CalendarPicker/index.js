@@ -11,6 +11,7 @@ import HeaderControls from './HeaderControls';
 import Weekdays from './Weekdays';
 import DaysGridView from './DaysGridView';
 import Swiper from './Swiper';
+import moment from 'moment';
 
 const SWIPE_LEFT = 'SWIPE_LEFT';
 const SWIPE_RIGHT = 'SWIPE_RIGHT';
@@ -104,26 +105,44 @@ export default class CalendarPicker extends Component {
     const {
       allowRangeSelection,
       onDateChange,
+      maxDays
     } = this.props;
 
     const date = new Date(currentYear, currentMonth, day);
+    let dayEndValid = true;
 
     if (allowRangeSelection &&
         selectedStartDate &&
         date >= selectedStartDate &&
         !selectedEndDate) {
-      this.setState({
-        selectedEndDate: date,
-      });
+          
+        const days = moment(date).diff(moment(selectedStartDate), 'days');
+        
+        if(days > maxDays) {
+          dayEndValid = false;
+          let maxDateValid = new Date(selectedStartDate);
+          maxDateValid.setDate(selectedStartDate.getDate() + maxDays);
+
+          const newDate = new Date(maxDateValid.getFullYear(), maxDateValid.getMonth(), maxDateValid.getDate());
+
+          this.setState({
+            selectedEndDate: newDate,
+          });
+        } else {
+          this.setState({
+            selectedEndDate: date,
+          });
+        }
+  
       // propagate to parent date has changed
-      onDateChange(date, Utils.END_DATE);
+      onDateChange(date, Utils.END_DATE, dayEndValid);
     } else {
       this.setState({
         selectedStartDate: date,
         selectedEndDate: null,
       });
       // propagate to parent date has changed
-      onDateChange(date, Utils.START_DATE);
+      onDateChange(date, Utils.START_DATE, dayEndValid);
     }
   }
 
@@ -203,6 +222,7 @@ export default class CalendarPicker extends Component {
       textStyle,
       textWeekdaysStyle,
       selectRangeColor,
+      maxDays
     } = this.props;
  
     return (

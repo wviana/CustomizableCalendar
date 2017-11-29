@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableHighlight
 } from 'react-native';
 import CalendarPicker from './CalendarPicker';
 import { MaterialIcons as Icon } from '@expo/vector-icons';
@@ -12,26 +13,33 @@ export default class App extends Component {
     super(props);
     this.state = {
       selectedStartDate: null,
+      selectedEndDate: null,
     };
     this.onDateChange = this.onDateChange.bind(this);
   }
 
-  onDateChange(date) {
-    this.setState({
-      selectedStartDate: date,
-    });
+  onDateChange(date, type) {
+      if (type === 'END_DATE') {
+          this.setState({
+            selectedEndDate: date,
+          });
+      } else {
+          this.setState({
+            selectedStartDate: date,
+            selectedEndDate: null,
+          });
+      }
   }
+
   render() {
-    const { selectedStartDate } = this.state;
+    const { selectedStartDate, selectedEndDate } = this.state;
     const startDate = selectedStartDate ? selectedStartDate.toString() : '';
-    const initialDate = new Date();
     const minDate = new Date(1900, 10, 6)
     const maxDate = new Date(3000, 1, 1);
     return (
       <View style={styles.container}>
         <CalendarPicker
           onDateChange={this.onDateChange}
-          initialDate={initialDate}
           allowRangeSelection={true}
           minDate={minDate}
           maxDate={maxDate}
@@ -48,7 +56,9 @@ export default class App extends Component {
           textWeekdaysStyle={{
             color: '#63CD54'
           }}
-        />
+          maxDays={20}
+          messageMaxDaysValid={'Permitido selecionar no máximo o perído de 30 dias.'}
+        />        
       </View>
     );
   }
