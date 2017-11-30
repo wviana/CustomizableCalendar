@@ -114,7 +114,7 @@ export default class CalendarPicker extends Component {
     if (allowRangeSelection &&
         selectedStartDate &&
         date >= selectedStartDate &&
-        !selectedEndDate) {
+        (selectedEndDate === selectedStartDate || !selectedEndDate)) {
           
         const days = moment(date).diff(moment(selectedStartDate), 'days');
         
