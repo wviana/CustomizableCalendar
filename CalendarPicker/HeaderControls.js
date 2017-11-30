@@ -31,10 +31,10 @@ export default function HeaderControls(props) {
   const month = MONTHS[currentMonth];
   const year = currentYear;
   const dayDiff = selectedEndDate && selectedStartDate && !Utils.compareDates(selectedEndDate, selectedStartDate);
-  const shortStartMonth = selectedStartDate && dayDiff ? shortMonths[selectedStartDate.getMonth()] : '';
-  const shortEndMonth = selectedEndDate && dayDiff ? ' - ' + shortMonths[selectedEndDate.getMonth()] : '';
-  const dayStart = selectedStartDate && dayDiff ? selectedStartDate.getDate() : '';
-  const dayEnd = selectedEndDate && dayDiff ? selectedEndDate.getDate() : '';
+  const shortStartMonth = selectedStartDate ? shortMonths[selectedStartDate.getMonth()] : '';
+  const shortEndMonth = selectedEndDate ? ' - ' + shortMonths[selectedEndDate.getMonth()] : '';
+  const dayStart = selectedStartDate ? selectedStartDate.getDate() : '';
+  const dayEnd = selectedEndDate ? selectedEndDate.getDate() : '';
 
   return (
     <View style={styles.headerWrapper}>
