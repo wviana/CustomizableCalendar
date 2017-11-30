@@ -1,6 +1,6 @@
 {
   "name": "react-native-costumizable-calendar",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Calendar Picker Component for React Native",
   "engines": {
     "node": ">=7.6.0"
