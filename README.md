@@ -1,4 +1,4 @@
-# Costumasible React Calendar
+# Customasible React Calendar
 
 This component is a fork from [CalendarPicker](https://github.com/stephy/CalendarPicker).
 I was made to it become more costomizable.
